@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.python-version
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Override any user-global gitignore that would block these
+!output/
+!output/**

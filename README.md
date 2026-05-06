@@ -147,7 +147,9 @@ real workloads," you're reading more into the model than is there.
 
 MIT — see [LICENSE](LICENSE).
 
-## Citing
+## Companion post
 
-If this analysis is useful in your own work, a link back to the companion
-LinkedIn / Substack post is appreciated. (Post URL added once published.)
+LinkedIn: https://www.linkedin.com/posts/activity-7457601252080906240-Etgx
+
+A Substack long-form follow-up is planned. If this analysis is useful in
+your own work, a link back to the LinkedIn post is appreciated.

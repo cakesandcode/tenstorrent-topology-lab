@@ -10,12 +10,23 @@ the heart of Tenstorrent's switch-less networking pitch:
 > with sqrt(N) while a fat-tree's diameter is fixed regardless of cluster
 > size.
 
-This repo is the companion code for a LinkedIn / Substack post on Tenstorrent
-Blackhole's networking architecture. The post argues that the switch-less
-torus is real engineering for the workload class Tenstorrent targets, but
-that the broader "compiler abstracts everything away" pitch deserves the same
-skepticism every previous AI-chip startup's compiler claim got. The simulator
-exists so the latency-versus-topology argument is checkable, not just stated.
+This repo accompanies analysis (LinkedIn + Substack, 2026) of Tenstorrent
+Blackhole's switch-less networking architecture. The argument the simulator
+supports is narrow: switch-less 2D torus is sound engineering for ring
+all-reduce and neighbor traffic; compiler claims that abstract a
+heterogeneous latency hierarchy from model code are the part that needs
+longer empirical validation. The simulator exists so the
+latency-versus-topology piece of that argument is checkable, not just stated.
+
+> **Context for future readers:** written in 2026 against Tenstorrent
+> Blackhole P150 (4× QSFP-DD, shipping 2025–2026) and NVIDIA H100 NVLink as
+> the comparison point. Per-hop latency assumptions (chip 30 ns, switch
+> 250 ns) are realistic for 2026 cutting-edge hardware; both numbers move
+> over time. The chart's *shape* depends on graph-theoretic facts (torus
+> diameter grows as sqrt(N), fat-tree diameter is constant) that don't
+> change. The crossover N is computable in closed form:
+> `N ≈ (SWITCH_HOP_NS × 6 / CHIP_HOP_NS)²`. Adjust the constants in
+> `latency_model.py` for newer hardware and re-run.
 
 ## What you get
 

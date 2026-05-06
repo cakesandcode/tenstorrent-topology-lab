@@ -256,29 +256,29 @@ trustworthy at the structural level.
 
 ---
 
-## Step 7 — Where the model is most likely wrong
+## Step 7 — What this model does not capture
 
-If you cite this chart in your own analysis, be ready to defend or concede on:
+If you cite this chart, here are the limits worth disclosing alongside it
+so a careful reader doesn't have to dig them out:
 
 1. **Ring all-reduce on fat-tree** assumes hosts are visited in enumeration
    order. A real all-reduce library would pick a smarter ordering. Fat-tree's
-   all-reduce numbers are pessimistic; even with a smarter ordering they'd be
-   2-4× worse than torus per ring step (every step is still a switch hop),
-   but not 18-19× worse.
+   all-reduce numbers here are pessimistic; even with a smarter ordering
+   they'd be 2-4× worse than torus per ring step (every step is still a
+   switch hop), but not 18-19× worse.
 2. **Neighbor exchange for fat-tree** uses "4 closest hosts" because fat-tree
    has no native notion of geometric neighbor. This penalizes fat-tree on a
-   workload that doesn't really apply to it. In real systems nobody would
-   deploy fat-tree for stencil-style workloads.
+   workload that doesn't really apply to it; in practice nobody deploys
+   fat-tree for stencil-style workloads.
 3. **No bandwidth model.** The big one. The all-to-all completion time you'd
    measure on real hardware is dominated by link bandwidth, not per-hop
    latency, for any non-trivial message size.
-4. **Static topology for fat-tree.** Real fat-trees have ECMP and adaptive
+4. **Static routing for fat-tree.** Real fat-trees use ECMP and adaptive
    routing; this model assumes shortest-path always.
 
-Defensive posture if a reader pushes on any of these: the model shows a
-*structural-latency* trade-off; bandwidth and routing are separate axes that
-this model deliberately doesn't capture. The README documents these limits
-explicitly.
+The honest framing: this model shows a *structural-latency* trade-off.
+Bandwidth and routing are separate axes the model deliberately doesn't
+capture, and the README says so explicitly.
 
 ---
 

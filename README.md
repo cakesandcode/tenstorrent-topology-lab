@@ -48,6 +48,11 @@ You'll see a markdown table of latencies on stdout and the chart will be
 written to `output/latency_vs_N.png`. The whole thing finishes in about 5
 seconds on a modern laptop.
 
+> **Want to verify the model yourself?** [TUTORIAL.md](TUTORIAL.md) is a
+> step-by-step walkthrough that sets up the simulator and validates each of
+> its outputs against graph-theoretic facts you can compute by hand. Useful
+> if you plan to cite the chart in your own analysis.
+
 ## How it works
 
 It's less of a simulator than the word suggests — it's a closed-form latency
